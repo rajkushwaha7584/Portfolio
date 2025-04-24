@@ -1,0 +1,665 @@
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap");
+
+/* :root {
+  --color-body: #b6cbce;
+  --color-heading: #eef3db;
+  --color-base: #201658;
+  --color-background: #050a44;
+  --color-brand: #e0f780;
+  --color-brand2: #deff58;
+} */
+:root {
+  --color-body: #c0c0c0; /* Silver gray for elegant readability */
+  --color-heading: #f0f0f0; /* Light, almost white for clear headings */
+  --color-base: #1a233b; /* Dark, slightly softer gray */
+  --color-background: #121212; /* Deep, inky black background */
+  --color-brand: #88c0d0; /* Soft, slightly desaturated blue */
+  --color-brand2: #a3be8c; /* Muted green for a subtle organic touch */
+}
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 0.02s ease, transform 0.1s ease-out;
+}
+
+.cursor-dot.hidden {
+  opacity: 0;
+}
+/* Scroll to Top Button Style */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
+  width: 50px;
+  height: 50px;
+  background-color: #1a233b; /* Yellow */
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollTopBtn:hover {
+  background-color: #1e42a4;
+}
+
+/* .skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+} */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-body);
+  font-family: "Bai Jamjuree", sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-body);
+}
+
+a:hover {
+  color: var(--color-brand);
+}
+
+img {
+  width: 100%;
+}
+/* ============================= */
+/*custom css for navbar start*/
+.navbar {
+  background-color: var(--color-base);
+}
+
+/* Navbar Link Normal Style */
+.navbar .nav-link {
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  transition: transform 0s ease, color 0s ease, box-shadow 0.1s ease,
+    background-color 0.5s ease;
+  position: relative;
+}
+
+/* Hover Effect */
+.navbar .nav-link:hover {
+  color: var(--color-brand); /* Hover color */
+  transform: scale(0.95); /* Zoom-out effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
+}
+
+/* Click/Active Effect */
+.navbar .nav-link:active {
+  color: #fff; /* Text color when clicked */
+  background-color: rgba(223, 184, 184, 0.136); /* Red background on click */
+  box-shadow: 0 0 20px 10px rgba(37, 32, 32, 0.6); /* Red blast shadow */
+  transform: scale(1.5); /* Slightly increase size to simulate a "blast" */
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    min-height: 100vh;
+    width: 240px;
+  }
+  /* nav image  */
+  .navbar-brand img {
+    border: 8px solid var(--color-brand);
+    border-radius: 50%;
+    width: 200px; /* Set width */
+    height: 200px;
+    transition: transform 1.5s ease;
+    transform-style: preserve-3d;
+  }
+  .content-wrapper {
+    padding-left: 240px;
+  }
+}
+.navbar-brand img:hover {
+  transform: scale(1.02) rotate(360deg); /* Zoom OUT effect (90% of original size) */
+}
+/* nave end   */
+.full-height {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 2px solid #201658;
+}
+
+.btn {
+  padding: 12px 28px;
+  font-weight: 700;
+}
+.btn-brand {
+  background-color: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-base);
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: var(--color-brand2);
+  color: var(--color-base);
+  border-color: var(--color-brand2);
+}
+
+.link-custom {
+  font-weight: 700px;
+  position: relative;
+  color: #e0f780;
+  text-decoration: none;
+}
+
+.link-custom:before {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #deff58;
+  bottom: 0;
+  left: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.link-custom:hover:before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+.bg-base {
+  background-color: var(--color-base);
+}
+.shadow-effect:hover {
+  box-shadow: -6px 6px 0 0 var(--color-brand);
+}
+.iconbox {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background-color: var(--color-base);
+  color: var(--color-base);
+}
+.card-custom .card-custom-img {
+  overflow: hidden;
+}
+
+/*start by raj */
+@media (max-width: 768px) {
+  .navbar {
+    min-height: auto; /* Adjust navbar height */
+    width: 100%; /* Ensure it spans full width */
+  }
+}
+@media (max-width: 768px) {
+  .iconbox {
+    width: 50px; /* Reduce icon box size */
+    height: 50px;
+    font-size: 24px; /* Adjust icon size */
+  }
+}
+@media (max-width: 576px) {
+  .iconbox {
+    width: 40px; /* Smaller icon size on very small screens */
+    height: 40px;
+    font-size: 20px; /* Reduce icon font size */
+  }
+}
+/* =========================== */
+/* Technologies start */
+.tech-card {
+  background-color: var(--bs-dark); /* or your theme color */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  height: 100%;
+}
+
+.tech-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.iconbox {
+  font-size: 2.5rem;
+  color: #00bcd4;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover .iconbox {
+  transform: rotate(6deg) scale(1.2);
+}
+
+/* end  tech*/
+/* ====================================== */
+/* work or projects  start*/
+.card-custom-img img {
+  object-fit: cover;
+  height: 250px;
+  transition: transform 0.6s ease;
+}
+
+.card-custom:hover .card-custom-img img {
+  transform: scale(1.5);
+}
+
+.card-custom-content h4 {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.link-custom {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link-custom:hover {
+  text-decoration: underline;
+}
+/*work end */
+/* ==================== ====*/
+/* Achievements start */
+/* platform start */
+#coding-achievements .achievement-card {
+  background: linear-gradient(145deg, #1e1e1e, #232323);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #f0f0f0;
+}
+
+#coding-achievements .achievement-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+#coding-achievements .iconbox {
+  font-size: 2.5rem;
+  color: #ffb347;
+  transition: transform 0.4s ease;
+}
+
+#coding-achievements .achievement-card:hover .iconbox {
+  transform: rotate(8deg) scale(1.2);
+}
+
+#coding-achievements h5 {
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+#coding-achievements p {
+  font-size: 0.95rem;
+  color: #dcdcdc;
+}
+/* platform end */
+/* Fade-in Animation */
+/* Gallery Card Styling */
+.gallery-card {
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid transparent; /* Initial border */
+}
+
+/* Hover effect for zooming out and border color */
+.gallery-card:hover {
+  transform: scale(0.95); /* Zoom out effect */
+  border: 2px solid #c5a4ff; /* Light purple border */
+}
+
+/* Image Styling */
+.gallery-card img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+  filter: brightness(0.9);
+}
+
+/* Brighten image on hover */
+.gallery-card:hover img {
+  filter: brightness(1.1);
+}
+
+/* Caption Styling */
+.gallery-card h5 {
+  color: #f1f1f1;
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* Reveal caption on hover */
+.gallery-card:hover h5 {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Increase image size by 50% when clicked */
+.gallery-card:active img {
+  transform: scale(1.35); /* Increase image size to 150% */
+  transition: transform 0.2s ease; /* Increase duration to 0.8s for smooth zoom effect */
+}
+/* Gallery End */
+/* cirtificate images start css */
+.gallery-card {
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: scale(0.95);
+  border: 2px solid #c5a4ff;
+}
+
+.gallery-card img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.gallery-card:hover img {
+  filter: brightness(1.1);
+}
+
+.gallery-card h5 {
+  color: #f1f1f1;
+  margin-top: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.gallery-card:hover h5 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-card:active img {
+  transform: scale(1.35);
+  transition: transform 0.2s ease;
+}
+
+/* cirtificate images end */
+/* Achievements end */
+/* ================================= */
+/* services stert */
+.iconbox {
+  background-color: #ffffff10;
+  padding: 15px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.iconbox:hover {
+  transform: scale(1.1);
+}
+
+.text-brand {
+  /* color: #ff4d4d; Or your theme color */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* end */
+
+/* contact start */
+.text-brand {
+  /* color: #ff4d4d; Or your theme highlight color */
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+}
+
+.btn-brand {
+  /* background-color: #ff4d4d; */
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-brand:hover {
+  background-color: #e03e3e;
+}
+
+textarea.form-control {
+  resize: none;
+}
+/* Apply light gray placeholder color */
+/* Light gray placeholder with transition */
+.form-control::placeholder {
+  color: #cccccc;
+  transition: color 0.3s ease;
+}
+
+/* Smooth input effects */
+.form-control {
+  background-color: #1e1e1e; /* dark background (optional) */
+  color: #ffffff;
+  border: 1px solid #444;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1rem;
+}
+
+/* On focus, animate border and placeholder */
+.form-control:focus {
+  border-color: #00bcd4; /* highlight color */
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.form-control:focus::placeholder {
+  color: #999999;
+}
+/* end */
+
+/* footer start */
+/* Social Icon Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: row; /* Forces icons to be in a horizontal row */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Optional: allows wrapping on small screens */
+  gap: 20px; /* Adds spacing between icons */
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    /* flex-direction: column; */
+    gap: 15px; /* Adjust the gap between icons */
+    padding: 15px; /* Adjust the padding */
+    align-items: center;
+  }
+}
+@media (max-width: 576px) {
+  .wrapper {
+    gap: 10px; /* Tighter gap on very small screens */
+    padding: 10px; /* Adjust padding for small screens */
+  }
+}
+@media (max-width: 768px) {
+  .row > [class*="col-"] {
+    flex: 0 0 100%; /* Stack the columns */
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .btn {
+    padding: 10px 24px;
+  } /* Shrink button padding */
+  .form-control {
+    font-size: 0.9rem;
+    padding: 8px 12px; /* Adjust form field padding */
+  }
+}
+@media (max-width: 576px) {
+  .btn-brand {
+    padding: 8px 20px; /* Smaller button padding */
+  }
+}
+
+/* end by raj */
+.wrapper .icon {
+  margin: 0 20px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon span {
+  height: 50px;
+  width: 50px;
+  color: #000;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon span i {
+  line-height: 50px;
+  font-size: 25px;
+}
+
+.wrapper .icon .tooltip {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 15;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -70px;
+  opacity: 1;
+  pointer-events: auto;
+}
+.icon {
+  justify-content: center;
+}
+.icon .tooltip:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  background: inherit;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.wrapper .icon:hover span {
+  color: #ffffff;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
+.wrapper .email:hover span,
+.wrapper .email:hover .tooltip {
+  background: #d44638;
+}
+
+.wrapper .linkedin:hover span,
+.wrapper .linkedin:hover .tooltip {
+  background: #3b5999;
+}
+
+.wrapper .instagram:hover span,
+.wrapper .instagram:hover .tooltip {
+  background: #e1306c;
+}
+
+.wrapper .github:hover span,
+.wrapper .github:hover .tooltip {
+  background: #333;
+}
+.wrapper .telegram:hover span,
+.wrapper .telegram:hover .tooltip {
+  background: #46c1f6;
+}
+
+/* the social media end */
