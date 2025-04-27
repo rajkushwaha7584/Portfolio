@@ -641,36 +641,36 @@
       <!-- Contact Form -->
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <form action="#" class="row g-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-            
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="76905cf0-1ec8-4e37-a089-c167fc17542b"/>            
             <!-- Name -->
             <div class="col-12">
-              <input type="text" class="form-control" placeholder="Enter your name" required />
+              <input type="text" name="name" class="form-control" placeholder="Enter your name" required />
             </div>
             
             <!-- Email -->
             <div class="col-12">
-              <input type="email" class="form-control" placeholder="Enter your email" required />
+              <input type="email" name="email" class="form-control" placeholder="Enter your email" required />
             </div>
             
             <!-- Subject -->
             <div class="col-12">
-              <input type="text" class="form-control" placeholder="Enter subject" required />
+              <input type="text" name="subject" class="form-control" placeholder="Enter subject" required />
             </div>
             
             <!-- Message -->
             <div class="col-12">
-              <textarea rows="5" class="form-control" placeholder="Enter your message" required></textarea>
+              <textarea name="message" rows="5" class="form-control" placeholder="Enter your message" required></textarea>
             </div>
             
             <!-- Submit Button -->
             <div class="col-12 d-grid">
-              <button type="submit" class="btn btn-brand" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+              <button type="submit" class="btn btn-brand">
                 Contact Me
               </button>
             </div>
-            
           </form>
+          
         </div>
       </div>
       
