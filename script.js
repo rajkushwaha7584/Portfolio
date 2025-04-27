@@ -12,7 +12,6 @@ AOS.init({
 });
 
 // gallery hover effect
-<script>
   document.querySelectorAll('.gallery-card').forEach(card => {
     const wrapper = card.querySelector('.img-3d-wrapper');
 
@@ -33,5 +32,5 @@ AOS.init({
       wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
     });
   });
-</script>
+
 
