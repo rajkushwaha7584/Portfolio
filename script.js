@@ -11,27 +11,27 @@ AOS.init({
   anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
 });
 
-// // gallery hover effect
-// <script>
-//   document.querySelectorAll('.gallery-card').forEach(card => {
-//     const wrapper = card.querySelector('.img-3d-wrapper');
+// gallery hover effect
+<script>
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    const wrapper = card.querySelector('.img-3d-wrapper');
 
-//     card.addEventListener('mousemove', e => {
-//       const rect = card.getBoundingClientRect();
-//       const x = e.clientX - rect.left;
-//       const y = e.clientY - rect.top;
-//       const centerX = rect.width / 2;
-//       const centerY = rect.height / 2;
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-//       const rotateX = -(y - centerY) / 10;
-//       const rotateY = (x - centerX) / 10;
+      const rotateX = -(y - centerY) / 10;
+      const rotateY = (x - centerX) / 10;
 
-//       wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-//     });
+      wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
 
-//     card.addEventListener('mouseleave', () => {
-//       wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
-//     });
-//   });
-// </script>
+    card.addEventListener('mouseleave', () => {
+      wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  });
+</script>
 
