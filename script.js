@@ -12,25 +12,28 @@ AOS.init({
 });
 
 // gallery hover effect
-  document.querySelectorAll('.gallery-card').forEach(card => {
-    const wrapper = card.querySelector('.img-3d-wrapper');
+document.querySelectorAll(".gallery-card").forEach((card) => {
+  const wrapper = card.querySelector(".img-3d-wrapper");
 
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-      const rotateX = -(y - centerY) / 10;
-      const rotateY = (x - centerX) / 10;
+    const rotateX = -(y - centerY) / 10;
+    const rotateY = (x - centerX) / 10;
 
-      wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    });
+    wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
 
-
+  card.addEventListener("mouseleave", () => {
+    wrapper.style.transform = "rotateX(0deg) rotateY(0deg)";
+  });
+});
+// Disable right-click
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+  alert("Right-click is disabled on this page.");
+});
