@@ -141,9 +141,28 @@ img {
     padding-left: 240px;
   }
 }
-.navbar-brand img:hover {
-  transform: scale(1.02) rotate(360deg); /* Zoom OUT effect (90% of original size) */
+/* navbar brand image */
+.navbar-brand img {
+  transition: transform 0.9s ease infinite;
 }
+
+.navbar-brand img:hover {
+  animation: leftRight 0.9s ease-in-out infinite;
+}
+
+@keyframes leftRight {
+  0% {
+    transform: translateX(0) scale(1.4);
+  }
+  50% {
+    transform: translateX(12px) rotate(5deg) scale(1.4);
+  }
+  100% {
+    transform: translateX(0) scale(1.4);
+  }
+}
+
+/* brand */
 /* nave end   */
 .full-height {
   min-height: 100vh;
