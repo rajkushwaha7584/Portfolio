@@ -1,47 +1,87 @@
 ﻿<!--Navbar starts here-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top portfolio-navbar">
   <div class="container flex-lg-column">
     <a href="#home" class="navbar-brand mx-lg-auto mb-lg-4">
       <span class="h3 fw-bold d-block d-lg-none">Raj Kushwaha</span>
-      <img src="images/naveimg.jpg" class="d-lg-block rounded-circle d-none" />
+      <span class="brand-photo-wrap d-lg-block d-none">
+        <img
+          src="images/naveimg.jpg"
+          class="rounded-circle"
+          alt="Raj Kushwaha profile" />
+        <span class="brand-status" aria-hidden="true"></span>
+      </span>
+      <span class="brand-meta d-none d-lg-block">
+        <strong>Raj Kushwaha</strong>
+        <small>DevOps &amp; DevSecOps</small>
+      </span>
     </a>
 
     <button
       type="button"
       class="navbar-toggler"
       data-bs-toggle="collapse"
-      data-bs-target="#myNavbar">
+      data-bs-target="#myNavbar"
+      aria-controls="myNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="navbar-nav ms-auto flex-lg-column text-center">
+      <ul class="navbar-nav ms-auto flex-lg-column">
         <li class="nav-item">
-          <a href="#home" class="nav-link">Home</a>
+          <a href="#home" class="nav-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#about" class="nav-link">About</a>
+          <a href="#about" class="nav-link">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>About</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#technologies" class="nav-link">Technologies</a>
+          <a href="#technologies" class="nav-link">
+            <i class="fa-solid fa-cubes"></i>
+            <span>Technologies</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#coding-achievements" class="nav-link">Coding Journey</a>
+          <a href="#coding-achievements" class="nav-link">
+            <i class="fa-solid fa-code-branch"></i>
+            <span>Coding Journey</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#achievements-gallery" class="nav-link">Achievements</a>
+          <a href="#achievements-gallery" class="nav-link">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Achievements</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#certificates-gallery" class="nav-link">Certificates</a>
+          <a href="#certificates-gallery" class="nav-link">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Certificates</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#services" class="nav-link">Services</a>
+          <a href="#services" class="nav-link">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <span>Services</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#work" class="nav-link">Projects</a>
+          <a href="#work" class="nav-link">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Projects</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="nav-link">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Contact</span>
+          </a>
         </li>
       </ul>
     </div>
