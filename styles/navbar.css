@@ -30,10 +30,17 @@
 }
 
 .portfolio-navbar .navbar-brand {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 12px;
   color: #fff;
+}
+
+.portfolio-navbar .navbar-toggler {
+  position: relative;
+  z-index: 2;
 }
 
 .brand-photo-wrap {
@@ -198,6 +205,35 @@
   box-shadow: 0 0 0 3px rgba(136, 192, 208, 0.24);
 }
 
+.nav-wave-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.nav-wave-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0 58%, rgba(15, 23, 42, 0.42));
+}
+
+.nav-wave-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 @keyframes navPulse {
   0% {
     transform: scale(0.75);
@@ -227,6 +263,10 @@
 
   .portfolio-navbar .navbar-brand {
     flex-direction: column;
+  }
+
+  .portfolio-navbar .navbar-collapse {
+    width: 100%;
   }
 
   .content-wrapper {
