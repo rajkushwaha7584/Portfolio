@@ -52,6 +52,93 @@ function initTypedText() {
   });
 }
 
+function initHeroThreeScene() {
+  const mount = document.getElementById("heroThreeScene");
+
+  if (!mount || !window.THREE) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const particleCount = window.innerWidth < 768 ? 80 : 150;
+  const positions = new Float32Array(particleCount * 3);
+  const colors = new Float32Array(particleCount * 3);
+  const colorA = new THREE.Color("#88c0d0");
+  const colorB = new THREE.Color("#a3be8c");
+  const colorC = new THREE.Color("#ffffff");
+
+  for (let i = 0; i < particleCount; i += 1) {
+    const index = i * 3;
+    const radius = 2.2 + Math.random() * 4.8;
+    const angle = Math.random() * Math.PI * 2;
+    const height = (Math.random() - 0.5) * 5.5;
+    const color = i % 3 === 0 ? colorA : i % 3 === 1 ? colorB : colorC;
+
+    positions[index] = Math.cos(angle) * radius;
+    positions[index + 1] = height;
+    positions[index + 2] = Math.sin(angle) * radius;
+    colors[index] = color.r;
+    colors[index + 1] = color.g;
+    colors[index + 2] = color.b;
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 0.045,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.9,
+  });
+  const points = new THREE.Points(geometry, material);
+
+  const ringGeometry = new THREE.TorusGeometry(2.85, 0.006, 8, 160);
+  const ringMaterial = new THREE.MeshBasicMaterial({
+    color: "#88c0d0",
+    transparent: true,
+    opacity: 0.28,
+  });
+  const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+  ring.rotation.x = Math.PI / 2.35;
+
+  scene.add(points);
+  scene.add(ring);
+  camera.position.z = 7.5;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+  mount.appendChild(renderer.domElement);
+
+  function resize() {
+    const width = mount.clientWidth || 1;
+    const height = mount.clientHeight || 1;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+  }
+
+  function animate() {
+    points.rotation.y += prefersReducedMotion ? 0 : 0.0017;
+    points.rotation.x += prefersReducedMotion ? 0 : 0.0007;
+    ring.rotation.z -= prefersReducedMotion ? 0 : 0.0013;
+    renderer.render(scene, camera);
+
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  animate();
+}
+
 function initCursor() {
   const cursorDot = document.querySelector(".cursor-dot");
 
@@ -180,6 +267,7 @@ function initContextMenuGuard() {
 
 async function initPortfolio() {
   await loadIncludes();
+  initHeroThreeScene();
   initAos();
   initTypedText();
   initCursor();
