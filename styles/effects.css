@@ -1,0 +1,432 @@
+.full-height {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 2px solid #201658;
+  overflow: hidden;
+}
+
+.full-height > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.section-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.section-3d-accent {
+  position: absolute;
+  right: clamp(18px, 5vw, 74px);
+  top: clamp(86px, 14vh, 150px);
+  z-index: 1;
+  width: 92px;
+  height: 92px;
+  pointer-events: none;
+  perspective: 520px;
+  opacity: 0.72;
+}
+
+.section-3d-ring {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(136, 192, 208, 0.42);
+  border-radius: 50%;
+  transform: rotateX(68deg) rotateZ(0deg);
+  animation: sectionRingSpin 7s linear infinite;
+  animation-delay: var(--spin-delay);
+}
+
+.section-3d-cube {
+  position: absolute;
+  inset: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(163, 190, 140, 0.5);
+  border-radius: 16px;
+  background: rgba(23, 31, 46, 0.58);
+  color: var(--color-brand);
+  font-size: 1.55rem;
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.26),
+    inset 0 0 24px rgba(136, 192, 208, 0.14);
+  transform-style: preserve-3d;
+  animation: sectionCubeFloat 4.8s ease-in-out infinite;
+  animation-delay: var(--spin-delay);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes sectionRingSpin {
+  to {
+    transform: rotateX(68deg) rotateZ(360deg);
+  }
+}
+
+@keyframes sectionCubeFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(18deg) rotateY(-24deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateX(-12deg) rotateY(28deg);
+  }
+}
+
+#about .section-ambient {
+  background:
+    radial-gradient(
+      circle at 18% 68%,
+      rgba(163, 190, 140, 0.18),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0 44%,
+      rgba(136, 192, 208, 0.08) 45% 46%,
+      transparent 47%
+    );
+}
+
+#technologies .section-ambient {
+  background:
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(136, 192, 208, 0.18),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 18% 78%,
+      rgba(163, 190, 140, 0.14),
+      transparent 28%
+    );
+}
+
+#coding-achievements .section-ambient {
+  background-image:
+    linear-gradient(90deg, rgba(255, 179, 71, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 179, 71, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+#achievements-gallery .section-ambient,
+#certificates-gallery .section-ambient {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(197, 164, 255, 0.16),
+    transparent 32%
+  );
+}
+
+#services .section-ambient {
+  background:
+    linear-gradient(120deg, transparent, rgba(0, 208, 132, 0.08), transparent),
+    radial-gradient(circle at 80% 74%, rgba(255, 138, 0, 0.12), transparent 28%);
+}
+
+#work .section-ambient {
+  background-image: radial-gradient(
+    rgba(136, 192, 208, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+#contact .section-ambient {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(70, 193, 246, 0.15),
+    transparent 38%
+  );
+}
+
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(136, 192, 208, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(136, 192, 208, 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 22%,
+    #000 78%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 22%,
+    #000 78%,
+    transparent
+  );
+  opacity: 0.45;
+}
+
+#home .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-three-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.hero-three-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dadu-helper {
+  position: fixed;
+  right: 22px;
+  bottom: 116px;
+  z-index: 120;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.global-tool-stream {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.global-tool-chip {
+  position: absolute;
+  top: var(--top);
+  left: -230px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: max-content;
+  padding: 9px 13px;
+  border: 1px solid rgba(136, 192, 208, 0.2);
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.36);
+  color: #f4f7fb;
+  font-size: 0.82rem;
+  font-weight: 700;
+  opacity: 0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  animation: globalToolFlow var(--speed) linear infinite;
+  animation-delay: var(--delay);
+  backdrop-filter: blur(8px);
+}
+
+.global-tool-chip i {
+  font-size: 1.25rem;
+}
+
+@keyframes globalToolFlow {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  10%,
+  86% {
+    opacity: 0.58;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(100vw + 300px), -18px, 0) rotate(3deg);
+  }
+}
+
+.dadu-bubble {
+  position: absolute;
+  right: 72px;
+  bottom: 54px;
+  min-width: 138px;
+  padding: 10px 12px;
+  border: 1px solid rgba(136, 192, 208, 0.4);
+  border-radius: 14px 14px 4px 14px;
+  background: rgba(23, 31, 46, 0.94);
+  color: #f5f7fb;
+  font-size: 0.86rem;
+  font-weight: 700;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.dadu-helper:hover .dadu-bubble,
+.dadu-helper.is-open .dadu-bubble {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dadu-body {
+  position: relative;
+  width: 70px;
+  height: 82px;
+  display: block;
+}
+
+.dadu-head {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f1c39c, #d99667);
+  box-shadow:
+    inset -8px -10px 0 rgba(96, 46, 25, 0.12),
+    0 12px 26px rgba(0, 0, 0, 0.28);
+}
+
+.dadu-hair {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 46px;
+  height: 22px;
+  border-radius: 50% 50% 35% 35%;
+  background: #f4f6f8;
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.65);
+}
+
+.dadu-eye {
+  position: absolute;
+  top: 26px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #17202d;
+}
+
+.dadu-eye-left {
+  left: 20px;
+}
+
+.dadu-eye-right {
+  right: 20px;
+}
+
+.dadu-moustache {
+  position: absolute;
+  left: 19px;
+  top: 38px;
+  width: 26px;
+  height: 7px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.dadu-smile {
+  position: absolute;
+  left: 25px;
+  top: 45px;
+  width: 14px;
+  height: 8px;
+  border-bottom: 2px solid #17202d;
+  border-radius: 0 0 999px 999px;
+}
+
+.dadu-hand {
+  position: absolute;
+  right: 48px;
+  bottom: 42px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f1c39c;
+  color: #17202d;
+  font-size: 0.68rem;
+  font-weight: 800;
+  transform-origin: 75% 90%;
+  animation: daduWave 1.25s ease-in-out infinite;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+@keyframes daduWave {
+  0%,
+  100% {
+    transform: rotate(12deg);
+  }
+  45% {
+    transform: rotate(-22deg) translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .dadu-helper {
+    right: 12px;
+    bottom: 94px;
+    transform: scale(0.82);
+    transform-origin: right bottom;
+  }
+
+  .global-tool-stream {
+    display: none;
+  }
+
+  .section-3d-accent {
+    width: 68px;
+    height: 68px;
+    right: 14px;
+    top: 86px;
+    opacity: 0.45;
+  }
+
+  .section-3d-cube {
+    inset: 17px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dadu-hand,
+  .tech-float-badge,
+  .global-tool-chip,
+  .section-3d-ring,
+  .section-3d-cube {
+    animation: none;
+  }
+
+  .tech-float-layer,
+  .global-tool-stream {
+    display: none;
+  }
+
+  .scroll-top-arrow,
+  #scrollTopBtn.is-clicked {
+    animation: none;
+  }
+}
