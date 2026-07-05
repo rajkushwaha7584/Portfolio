@@ -211,6 +211,121 @@ function initHeroThreeScene() {
   animate();
 }
 
+function initNavbarThreeScene() {
+  const mount = document.getElementById("navWaveScene");
+
+  if (!mount || !window.THREE || mount.dataset.ready === "true") {
+    return;
+  }
+
+  mount.dataset.ready = "true";
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const styles = getComputedStyle(document.documentElement);
+  const brandColor = styles.getPropertyValue("--color-brand").trim() || "#38bdf8";
+  const brandColor2 =
+    styles.getPropertyValue("--color-brand2").trim() || "#2dd4bf";
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+    powerPreference: "high-performance",
+  });
+  const group = new THREE.Group();
+  const particleCount = 46;
+  const positions = new Float32Array(particleCount * 3);
+  const colors = new Float32Array(particleCount * 3);
+  const colorA = new THREE.Color(brandColor);
+  const colorB = new THREE.Color(brandColor2);
+  const colorC = new THREE.Color("#ffffff");
+
+  for (let i = 0; i < particleCount; i += 1) {
+    const index = i * 3;
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 0.6 + Math.random() * 2.2;
+    const color = i % 3 === 0 ? colorA : i % 3 === 1 ? colorB : colorC;
+
+    positions[index] = Math.cos(angle) * radius;
+    positions[index + 1] = (Math.random() - 0.5) * 2.2;
+    positions[index + 2] = Math.sin(angle) * radius;
+    colors[index] = color.r;
+    colors[index + 1] = color.g;
+    colors[index + 2] = color.b;
+  }
+
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(positions, 3)
+  );
+  particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+  const particles = new THREE.Points(
+    particleGeometry,
+    new THREE.PointsMaterial({
+      size: 0.055,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.82,
+    })
+  );
+
+  const ringGeometry = new THREE.TorusGeometry(0.82, 0.012, 8, 96);
+  const ringMaterial = new THREE.MeshBasicMaterial({
+    color: brandColor,
+    transparent: true,
+    opacity: 0.38,
+  });
+  const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+  ring.rotation.x = Math.PI / 2.7;
+
+  const cube = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.34, 1),
+    new THREE.MeshBasicMaterial({
+      color: brandColor2,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.42,
+    })
+  );
+  cube.position.set(0.56, 0.05, 0);
+
+  group.add(particles, ring, cube);
+  scene.add(group);
+  camera.position.z = 3.8;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  mount.appendChild(renderer.domElement);
+
+  function resize() {
+    const width = mount.clientWidth || 1;
+    const height = mount.clientHeight || 1;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+  }
+
+  function animate() {
+    group.rotation.y += prefersReducedMotion ? 0 : 0.006;
+    particles.rotation.y -= prefersReducedMotion ? 0 : 0.0025;
+    ring.rotation.z += prefersReducedMotion ? 0 : 0.008;
+    cube.rotation.x += prefersReducedMotion ? 0 : 0.009;
+    cube.rotation.y -= prefersReducedMotion ? 0 : 0.007;
+    renderer.render(scene, camera);
+
+    if (!prefersReducedMotion) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  animate();
+}
+
 function initCursor() {
   const cursorDot = document.querySelector(".cursor-dot");
 
@@ -355,6 +470,7 @@ async function initPortfolio() {
   await loadIncludes();
   document.dispatchEvent(new CustomEvent("portfolio:sections-ready"));
   initHeroThreeScene();
+  initNavbarThreeScene();
   initAos();
   initTypedText();
   initCursor();
