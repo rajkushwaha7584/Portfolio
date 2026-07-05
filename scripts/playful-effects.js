@@ -25,10 +25,47 @@
     `;
 
     helper.addEventListener("click", () => {
-      helper.classList.toggle("is-open");
+      const contactSection = document.getElementById("contact");
+
+      helper.classList.add("is-open");
+
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
 
     document.body.appendChild(helper);
+  }
+
+  function createGlobalToolStream() {
+    if (document.querySelector(".global-tool-stream")) {
+      return;
+    }
+
+    const tools = [
+      { label: "Docker", icon: "devicon-docker-plain colored" },
+      { label: "Kubernetes", icon: "devicon-kubernetes-plain colored" },
+      { label: "Terraform", icon: "devicon-terraform-plain colored" },
+      { label: "AWS", icon: "devicon-amazonwebservices-plain-wordmark tech-icon-aws" },
+      { label: "Jenkins", icon: "devicon-jenkins-plain colored" },
+      { label: "Argo CD", icon: "fa-solid fa-infinity tech-icon-argocd" },
+      { label: "GitHub Actions", icon: "fa-brands fa-github tech-icon-actions" },
+    ];
+    const layer = document.createElement("div");
+    layer.className = "global-tool-stream";
+    layer.setAttribute("aria-hidden", "true");
+
+    tools.forEach((tool, index) => {
+      const item = document.createElement("span");
+      item.className = "global-tool-chip";
+      item.style.setProperty("--top", `${10 + ((index * 13) % 74)}vh`);
+      item.style.setProperty("--delay", `${-index * 1.35}s`);
+      item.style.setProperty("--speed", `${7 + (index % 3)}s`);
+      item.innerHTML = `<i class="${tool.icon}"></i><span>${tool.label}</span>`;
+      layer.appendChild(item);
+    });
+
+    document.body.appendChild(layer);
   }
 
   function createFloatingTechBadges() {
@@ -65,20 +102,44 @@
   }
 
   function addSectionAmbientLayers() {
-    document.querySelectorAll(".full-height").forEach((section) => {
+    const accentMap = {
+      home: "fa-solid fa-code-branch",
+      about: "fa-solid fa-user-gear",
+      technologies: "fa-solid fa-cubes",
+      "coding-achievements": "fa-solid fa-terminal",
+      "achievements-gallery": "fa-solid fa-trophy",
+      "certificates-gallery": "fa-solid fa-award",
+      services: "fa-solid fa-cloud-arrow-up",
+      work: "fa-solid fa-diagram-project",
+      contact: "fa-solid fa-paper-plane",
+    };
+
+    document.querySelectorAll(".full-height").forEach((section, index) => {
       if (section.querySelector(".section-ambient")) {
         return;
       }
 
       const ambient = document.createElement("div");
+      const accent = document.createElement("div");
+      const iconClass = accentMap[section.id] || "fa-solid fa-cube";
+
       ambient.className = "section-ambient";
       ambient.setAttribute("aria-hidden", "true");
+      accent.className = "section-3d-accent";
+      accent.style.setProperty("--spin-delay", `${-index * 0.6}s`);
+      accent.setAttribute("aria-hidden", "true");
+      accent.innerHTML = `
+        <span class="section-3d-ring"></span>
+        <span class="section-3d-cube"><i class="${iconClass}"></i></span>
+      `;
       section.prepend(ambient);
+      section.prepend(accent);
     });
   }
 
   function initPlayfulEffects() {
     createDaduHelper();
+    createGlobalToolStream();
     createFloatingTechBadges();
     addSectionAmbientLayers();
   }
