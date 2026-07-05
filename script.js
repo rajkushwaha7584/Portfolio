@@ -68,13 +68,19 @@ function initHeroThreeScene() {
   ).matches;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+    powerPreference: "high-performance",
+  });
+  const group = new THREE.Group();
   const particleCount = window.innerWidth < 768 ? 80 : 150;
   const positions = new Float32Array(particleCount * 3);
   const colors = new Float32Array(particleCount * 3);
   const colorA = new THREE.Color("#88c0d0");
   const colorB = new THREE.Color("#a3be8c");
   const colorC = new THREE.Color("#ffffff");
+  const mouse = { x: 0, y: 0 };
 
   for (let i = 0; i < particleCount; i += 1) {
     const index = i * 3;
@@ -96,12 +102,50 @@ function initHeroThreeScene() {
   geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
   const material = new THREE.PointsMaterial({
-    size: 0.045,
+    size: window.innerWidth < 768 ? 0.055 : 0.045,
     vertexColors: true,
     transparent: true,
     opacity: 0.9,
   });
   const points = new THREE.Points(geometry, material);
+
+  const linePositions = [];
+
+  for (let i = 0; i < particleCount - 8; i += 4) {
+    const current = i * 3;
+    const next = (i + 7) * 3;
+
+    linePositions.push(
+      positions[current],
+      positions[current + 1],
+      positions[current + 2],
+      positions[next],
+      positions[next + 1],
+      positions[next + 2]
+    );
+  }
+
+  const lineGeometry = new THREE.BufferGeometry();
+  lineGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(linePositions, 3)
+  );
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: "#88c0d0",
+    transparent: true,
+    opacity: 0.16,
+  });
+  const connectionLines = new THREE.LineSegments(lineGeometry, lineMaterial);
+
+  const coreGeometry = new THREE.IcosahedronGeometry(1.05, 1);
+  const coreMaterial = new THREE.MeshBasicMaterial({
+    color: "#a3be8c",
+    wireframe: true,
+    transparent: true,
+    opacity: 0.35,
+  });
+  const core = new THREE.Mesh(coreGeometry, coreMaterial);
+  core.position.set(2.35, 0.15, 0);
 
   const ringGeometry = new THREE.TorusGeometry(2.85, 0.006, 8, 160);
   const ringMaterial = new THREE.MeshBasicMaterial({
@@ -112,8 +156,19 @@ function initHeroThreeScene() {
   const ring = new THREE.Mesh(ringGeometry, ringMaterial);
   ring.rotation.x = Math.PI / 2.35;
 
-  scene.add(points);
-  scene.add(ring);
+  const secondaryRing = new THREE.Mesh(ringGeometry.clone(), ringMaterial.clone());
+  secondaryRing.material.color = new THREE.Color("#a3be8c");
+  secondaryRing.material.opacity = 0.2;
+  secondaryRing.rotation.x = Math.PI / 3.2;
+  secondaryRing.rotation.y = Math.PI / 4;
+
+  group.add(points);
+  group.add(connectionLines);
+  group.add(ring);
+  group.add(secondaryRing);
+  group.add(core);
+  group.position.x = window.innerWidth < 992 ? 0.6 : 1.35;
+  scene.add(group);
   camera.position.z = 7.5;
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
   mount.appendChild(renderer.domElement);
@@ -127,10 +182,22 @@ function initHeroThreeScene() {
     renderer.setSize(width, height, false);
   }
 
+  function handlePointerMove(event) {
+    const rect = mount.getBoundingClientRect();
+
+    mouse.x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    mouse.y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+  }
+
   function animate() {
-    points.rotation.y += prefersReducedMotion ? 0 : 0.0017;
-    points.rotation.x += prefersReducedMotion ? 0 : 0.0007;
+    group.rotation.y += prefersReducedMotion ? 0 : 0.0017;
+    group.rotation.x += prefersReducedMotion ? 0 : 0.0007;
+    group.rotation.y += (mouse.x * 0.08 - group.rotation.y) * 0.006;
+    group.rotation.x += (-mouse.y * 0.08 - group.rotation.x) * 0.006;
+    core.rotation.x += prefersReducedMotion ? 0 : 0.003;
+    core.rotation.y -= prefersReducedMotion ? 0 : 0.004;
     ring.rotation.z -= prefersReducedMotion ? 0 : 0.0013;
+    secondaryRing.rotation.z += prefersReducedMotion ? 0 : 0.001;
     renderer.render(scene, camera);
 
     if (!prefersReducedMotion) {
@@ -139,6 +206,7 @@ function initHeroThreeScene() {
   }
 
   window.addEventListener("resize", resize);
+  window.addEventListener("mousemove", handlePointerMove, { passive: true });
   resize();
   animate();
 }
