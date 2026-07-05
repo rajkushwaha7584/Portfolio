@@ -201,7 +201,7 @@
 
 .dadu-helper {
   position: fixed;
-  right: 22px;
+  left: 22px;
   bottom: 116px;
   z-index: 120;
   display: flex;
@@ -264,12 +264,12 @@
 
 .dadu-bubble {
   position: absolute;
-  right: 72px;
+  left: 72px;
   bottom: 54px;
   min-width: 138px;
   padding: 10px 12px;
   border: 1px solid rgba(136, 192, 208, 0.4);
-  border-radius: 14px 14px 4px 14px;
+  border-radius: 14px 14px 14px 4px;
   background: rgba(23, 31, 46, 0.94);
   color: #f5f7fb;
   font-size: 0.86rem;
@@ -386,10 +386,10 @@
 
 @media (max-width: 768px) {
   .dadu-helper {
-    right: 12px;
+    left: 12px;
     bottom: 94px;
     transform: scale(0.82);
-    transform-origin: right bottom;
+    transform-origin: left bottom;
   }
 
   .global-tool-stream {

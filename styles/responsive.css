@@ -210,7 +210,8 @@ button {
   }
 
   #scrollTopBtn {
-    right: 16px;
+    left: 16px;
+    right: auto;
     bottom: 18px;
     width: 42px;
     height: 42px;
@@ -334,7 +335,8 @@ button {
   }
 
   .dadu-bubble {
-    right: 64px;
+    left: 64px;
+    right: auto;
     min-width: 120px;
     max-width: 160px;
     font-size: 0.78rem;
