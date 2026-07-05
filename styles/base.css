@@ -42,7 +42,8 @@ html {
   --scroll-progress: 0deg;
   position: fixed;
   bottom: 50px;
-  right: 50px;
+  left: 50px;
+  right: auto;
   z-index: 130;
   width: 56px;
   height: 56px;
