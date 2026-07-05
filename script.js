@@ -339,6 +339,7 @@ function initContextMenuGuard() {
 
 async function initPortfolio() {
   await loadIncludes();
+  document.dispatchEvent(new CustomEvent("portfolio:sections-ready"));
   initHeroThreeScene();
   initAos();
   initTypedText();
