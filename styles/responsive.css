@@ -1,0 +1,444 @@
+/* ============================= */
+/* Responsive polish */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+button {
+  overflow-wrap: anywhere;
+}
+
+.content-wrapper,
+.full-height,
+.container,
+.row {
+  max-width: 100%;
+}
+
+.full-height {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.full-height > .container {
+  width: min(100%, 1140px);
+}
+
+#home .lead {
+  max-width: 860px;
+}
+
+#home .container > .row > [class*="col-"] {
+  min-width: 0;
+}
+
+#home .btn,
+#home .link-custom {
+  margin-bottom: 12px;
+}
+
+#home .link-custom {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.bg-base,
+.service-card,
+.tech-card,
+.gallery-card,
+.card-custom {
+  min-width: 0;
+}
+
+.bg-base ul {
+  padding-left: 1rem;
+}
+
+.card-custom,
+.service-card,
+.gallery-card,
+.achievement-card,
+.tech-card {
+  height: 100%;
+}
+
+.card-custom-img {
+  aspect-ratio: 16 / 10;
+}
+
+.card-custom-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-card img {
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+.certificate-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #f4f7fb;
+}
+
+#contact form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-control,
+.btn {
+  min-height: 44px;
+}
+
+.wrapper {
+  max-width: 100%;
+}
+
+@media (min-width: 1400px) {
+  .full-height > .container {
+    width: min(100%, 1180px);
+  }
+}
+
+@media (max-width: 1199px) {
+  .portfolio-navbar .nav-link {
+    min-height: 42px;
+    padding: 9px 12px;
+    font-size: 0.9rem;
+  }
+
+  .brand-photo-wrap {
+    width: 164px;
+    height: 164px;
+  }
+
+  .section-3d-accent {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 991px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  .content-wrapper {
+    padding-left: 0;
+  }
+
+  .full-height {
+    min-height: auto;
+    padding-top: 96px;
+    padding-bottom: 64px;
+  }
+
+  #home.full-height {
+    min-height: 100vh;
+  }
+
+  .portfolio-navbar {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .portfolio-navbar .container {
+    align-items: center;
+  }
+
+  .portfolio-navbar .navbar-nav {
+    padding-bottom: 8px;
+  }
+
+  .portfolio-navbar .nav-link {
+    min-height: 46px;
+  }
+
+  .hero-three-scene {
+    opacity: 0.58;
+  }
+
+  .tech-float-layer {
+    display: none;
+  }
+
+  .service-card,
+  .card-custom-content,
+  .bg-base {
+    padding: 22px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+
+  .cursor-dot {
+    display: none;
+  }
+
+  #scrollTopBtn {
+    right: 16px;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .full-height {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 88px;
+    padding-bottom: 54px;
+  }
+
+  h1,
+  .display-4 {
+    font-size: 2.15rem;
+    line-height: 1.16;
+  }
+
+  .display-6,
+  .mytext {
+    display: block;
+    min-height: 42px;
+    font-size: 1.45rem;
+    line-height: 1.3;
+  }
+
+  .lead {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  #home .btn {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+
+  #home .link-custom {
+    justify-content: center;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(136, 192, 208, 0.24);
+    border-radius: 10px;
+    background: rgba(136, 192, 208, 0.06);
+  }
+
+  .technology-group-heading {
+    text-align: left;
+  }
+
+  .tech-card {
+    padding: 1rem;
+    border-radius: 0.85rem;
+  }
+
+  .tech-card .iconbox,
+  #coding-achievements .iconbox {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tech-card h5,
+  #coding-achievements h5 {
+    font-size: 0.9rem;
+  }
+
+  #coding-achievements p {
+    font-size: 0.86rem;
+  }
+
+  .gallery-card,
+  .service-card {
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .gallery-card h5 {
+    opacity: 1;
+    transform: none;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .gallery-card:active img {
+    transform: none;
+  }
+
+  .card-custom-img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .card-custom-img img {
+    height: 100%;
+  }
+
+  .card-custom:hover .card-custom-img img,
+  .tech-card:hover,
+  .service-card:hover,
+  #coding-achievements .achievement-card:hover,
+  .gallery-card:hover {
+    transform: none;
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 25px;
+    margin-bottom: 16px;
+  }
+
+  .section-3d-accent {
+    display: none;
+  }
+
+  .dadu-helper {
+    bottom: 72px;
+  }
+
+  .dadu-bubble {
+    right: 64px;
+    min-width: 120px;
+    max-width: 160px;
+    font-size: 0.78rem;
+  }
+
+  .wrapper {
+    gap: 12px;
+    padding: 16px 10px;
+  }
+
+  .wrapper .icon {
+    margin: 0;
+  }
+
+  .wrapper .icon .tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .portfolio-navbar {
+    padding: 8px 10px;
+  }
+
+  .portfolio-navbar .navbar-brand .h3 {
+    font-size: 1rem;
+  }
+
+  .portfolio-navbar .nav-link {
+    min-height: 42px;
+    padding: 8px 10px;
+    font-size: 0.88rem;
+  }
+
+  .portfolio-navbar .nav-link i {
+    width: 18px;
+    font-size: 0.92rem;
+  }
+
+  .full-height {
+    padding-top: 82px;
+  }
+
+  h1,
+  .display-4 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.12rem;
+  }
+
+  .row.gy-4,
+  .row.g-4 {
+    --bs-gutter-y: 1rem;
+    --bs-gutter-x: 1rem;
+  }
+
+  #technologies .row > .col-6,
+  #coding-achievements .row > .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .tech-card {
+    min-height: 132px;
+  }
+
+  .service-card,
+  .card-custom-content,
+  .bg-base {
+    padding: 18px !important;
+  }
+
+  .card-custom-content h4,
+  .service-card h5 {
+    font-size: 1.05rem;
+  }
+
+  .card-custom-content p,
+  .service-card p,
+  .certificate-card p {
+    font-size: 0.92rem;
+  }
+
+  .certificate-card img {
+    aspect-ratio: 1.25 / 1;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+  }
+
+  .wrapper .icon span {
+    width: 44px;
+    height: 44px;
+  }
+
+  .wrapper .icon span i {
+    line-height: 44px;
+    font-size: 21px;
+  }
+}

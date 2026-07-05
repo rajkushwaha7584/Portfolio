@@ -1,0 +1,188 @@
+/* :root {
+  --color-body: #b6cbce;
+  --color-heading: #eef3db;
+  --color-base: #201658;
+  --color-background: #050a44;
+  --color-brand: #e0f780;
+  --color-brand2: #deff58;
+} */
+:root {
+  --color-body: #c0c0c0; /* Silver gray for elegant readability */
+  --color-heading: #f0f0f0; /* Light, almost white for clear headings */
+  --color-base: #1a233b; /* Dark, slightly softer gray */
+  --color-background: #121212; /* Deep, inky black background */
+  --color-brand: #88c0d0; /* Soft, slightly desaturated blue */
+  --color-brand2: #a3be8c; /* Muted green for a subtle organic touch */
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition:
+    opacity 0.02s ease,
+    transform 0.1s ease-out;
+}
+
+.cursor-dot.hidden {
+  opacity: 0;
+}
+/* Scroll to Top Button Style */
+#scrollTopBtn {
+  --scroll-progress: 0deg;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 130;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(
+    var(--color-brand2) var(--scroll-progress),
+    rgba(136, 192, 208, 0.18) 0
+  );
+  color: var(--color-base);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 19px;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.84);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+#scrollTopBtn::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid rgba(136, 192, 208, 0.28);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.82);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+#scrollTopBtn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+#scrollTopBtn.is-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-top-progress {
+  position: absolute;
+  inset: 5px;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgba(255, 255, 255, 0.35),
+      transparent 28%
+    ),
+    linear-gradient(145deg, var(--color-brand), var(--color-brand2));
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.18);
+}
+
+.scroll-top-arrow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  animation: scrollArrowFloat 1.35s ease-in-out infinite;
+}
+
+#scrollTopBtn:hover {
+  box-shadow: 0 18px 46px rgba(136, 192, 208, 0.3);
+  transform: translateY(-4px) scale(1.04);
+}
+
+#scrollTopBtn:hover::before {
+  opacity: 0.85;
+  transform: scale(1.18);
+}
+
+#scrollTopBtn.is-clicked {
+  animation: scrollTopClick 0.45s ease;
+}
+
+@keyframes scrollArrowFloat {
+  0%,
+  100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes scrollTopClick {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.88) rotate(-10deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* .skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+} */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-body);
+  font-family: "Bai Jamjuree", sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-body);
+}
+
+a:hover {
+  color: var(--color-brand);
+}
+
+img {
+  width: 100%;
+}
