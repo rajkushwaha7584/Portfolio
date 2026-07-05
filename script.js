@@ -45,7 +45,11 @@ function initTypedText() {
   }
 
   new Typed(".mytext", {
-    strings: ["Java Full Stack Developer", "Spring Framework Specialist"],
+    strings: [
+      "DevOps Associate Intern",
+      "DevSecOps Learner",
+      "Java Full Stack Developer",
+    ],
     typeSpeed: 100,
     backSpeed: 150,
     loop: true,
