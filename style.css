@@ -184,6 +184,30 @@ img {
   border-bottom: 2px solid #201658;
 }
 
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+#home .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-three-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.hero-three-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .btn {
   padding: 12px 28px;
   font-weight: 700;
@@ -519,6 +543,18 @@ img {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.4s ease;
+}
+
+.certificate-card h5 {
+  opacity: 1;
+  transform: none;
+}
+
+.certificate-card p {
+  color: #cfd7e3;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 10px 0 0;
 }
 
 .gallery-card:hover h5 {
