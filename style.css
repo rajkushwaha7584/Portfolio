@@ -189,6 +189,27 @@ img {
   overflow: hidden;
 }
 
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(136, 192, 208, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(136, 192, 208, 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 22%,
+    #000 78%,
+    transparent
+  );
+  mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+  opacity: 0.45;
+}
+
 #home .container {
   position: relative;
   z-index: 2;
@@ -199,7 +220,7 @@ img {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.9;
 }
 
 .hero-three-scene canvas {
