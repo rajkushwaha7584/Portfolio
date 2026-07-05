@@ -254,15 +254,29 @@ function initScrollTopButton() {
     return;
   }
 
-  window.addEventListener("scroll", () => {
-    const isVisible =
-      document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
-    scrollTopBtn.style.display = isVisible ? "block" : "none";
-  });
+  function updateScrollTopButton() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollableHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const progress =
+      scrollableHeight > 0 ? Math.min(scrollTop / scrollableHeight, 1) : 0;
+
+    scrollTopBtn.classList.toggle("is-visible", scrollTop > 120);
+    scrollTopBtn.style.setProperty("--scroll-progress", `${progress * 360}deg`);
+  }
 
   scrollTopBtn.addEventListener("click", () => {
+    scrollTopBtn.classList.add("is-clicked");
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    window.setTimeout(() => {
+      scrollTopBtn.classList.remove("is-clicked");
+    }, 450);
   });
+
+  updateScrollTopButton();
+  window.addEventListener("scroll", updateScrollTopButton, { passive: true });
+  window.addEventListener("resize", updateScrollTopButton);
 }
 
 function initGalleryTilt() {
