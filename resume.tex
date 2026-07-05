@@ -1,0 +1,190 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{charter}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.8in}
+\addtolength{\textheight}{1.6in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-8pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+  \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+    \small #1 & \textbf{\small #2}\\
+  \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \textbf{\scshape Raj Kushwaha}} \\ \vspace{2pt}
+    \small 6264100725 $|$
+    \href{mailto:Rajwork200@gmail.com}{\underline{Rajwork200@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/rajkushwaha0111/}{\underline{linkedin.com/in/rajkushwaha0111}} $|$
+    \href{https://github.com/rajkushwaha7584}{\underline{github.com/rajkushwaha7584}} \\
+    \small Bhopal, MP
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Profile Summary}
+\small{
+Java Full Stack Developer with hands-on experience building responsive web applications using Java, Spring Boot, SQL, HTML, CSS, Bootstrap, and JavaScript. Strong interest in DevOps and DevSecOps with practical exposure to Docker, Kubernetes, Helm, Terraform, AWS, Azure, CI/CD pipelines, monitoring, and security scanning tools. Comfortable supporting client and college projects from local setup to deployment, debugging, documentation, and maintenance.
+}
+\vspace{-4pt}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{
+\item \textbf{Languages}{: Java, C/C++, HTML5, CSS3, JavaScript, SQL}
+\item \textbf{Java Full Stack}{: Spring Boot, Spring MVC, Spring Security, Thymeleaf, Bootstrap, REST APIs}
+\item \textbf{Databases}{: MySQL, PostgreSQL}
+\item \textbf{Cloud Platforms}{: AWS, Azure}
+\item \textbf{DevOps \& CI/CD}{: Git, GitHub, GitLab, GitHub Actions, Jenkins, Docker, Docker Compose}
+\item \textbf{Containerization \& Orchestration}{: Docker, Kubernetes, Helm, Argo CD}
+\item \textbf{Infrastructure \& Automation}{: Terraform, Ansible, Linux, Shell Commands}
+\item \textbf{Monitoring \& Observability}{: Prometheus, Grafana, Datadog, CloudWatch}
+\item \textbf{DevSecOps \& Code Quality}{: SonarQube, OWASP, OWASP ZAP, Trivy, Snyk}
+\item \textbf{Developer Tools}{: Docker Hub, IntelliJ IDEA, VS Code, Postman}
+}
+\end{itemize}
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{Three-Tier Application Deployment on AWS}
+$|$ \emph{Terraform, AWS ECR, ECS Fargate, CloudWatch, Docker, GitHub Actions}}
+{Jun 2026}
+\resumeItemListStart
+\resumeItem{Provisioned AWS infrastructure using \textbf{Terraform modules}, including VPC, ECR, ECS Fargate, IAM roles, and CloudWatch logging.}
+\resumeItem{Configured Amazon \textbf{ECR} for Docker image storage and Amazon \textbf{ECS Fargate} for running a containerized application without server management.}
+\resumeItem{Built a CI/CD pipeline with \textbf{GitHub Actions} to build, tag, push Docker images to ECR, and trigger ECS service deployment.}
+\resumeItem{Verified ECS task execution, container health, service rollout, CloudWatch logs, and public endpoint access.}
+\resumeItem{Implemented a DevOps deployment flow covering infrastructure provisioning, image push, service deployment, and monitoring.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{DevOps Toolchain and Kubernetes Workflow}
+$|$ \emph{Docker, Kubernetes, Helm, Argo CD, Jenkins, GitHub Actions}}
+{May 2026}
+\resumeItemListStart
+\resumeItem{Practiced container-based deployment workflows using \textbf{Docker}, image repositories, and Kubernetes manifests.}
+\resumeItem{Used \textbf{Helm} concepts to package Kubernetes resources and simplify repeatable application deployments.}
+\resumeItem{Explored GitOps-style delivery using \textbf{Argo CD} for syncing application state from Git repositories to Kubernetes clusters.}
+\resumeItem{Worked with CI/CD concepts using \textbf{Jenkins} and \textbf{GitHub Actions} for automated build and deployment stages.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Three-Tier Web Application Deployment} $|$ \emph{Go, MySQL, Nginx, Docker, GitHub Actions, AWS EC2}}{Apr 2026}
+\resumeItemListStart
+\resumeItem{Built and deployed a 3-tier web application with Nginx frontend, Go backend, and MySQL database.}
+\resumeItem{Containerized services using \textbf{Docker} and \textbf{Docker Compose} for consistent local and server environments.}
+\resumeItem{Implemented a CI/CD pipeline using \textbf{GitHub Actions} for automated deployment on AWS EC2.}
+\resumeItem{Configured secure SSH access, environment variables, container networking, and deployment troubleshooting.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{FitFlex - Gym Application} $|$ \emph{Java, Spring Boot, Spring Security, PostgreSQL, Docker, AWS EC2}}{Nov 2025}
+\resumeItemListStart
+\resumeItem{Developed a full-stack gym management platform for member registration, login, subscriptions, and fitness tracking.}
+\resumeItem{Implemented role-based access control using \textbf{Spring Security} with admin controls and authenticated user workflows.}
+\resumeItem{Built a dynamic BMI calculator with gauge visualization, dark mode support, and responsive Bootstrap UI.}
+\resumeItem{Generated PDF membership cards with QR codes and images using \textbf{iText}.}
+\resumeItem{Containerized the application using \textbf{Docker} and deployed it on \textbf{AWS EC2}.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{GadgetHub - E-Commerce Web Application} $|$ \emph{Java EE, JDBC, SQL, Bootstrap}}{Jan 2025}
+\resumeItemListStart
+\resumeItem{Built a full-stack e-commerce platform for electronic gadgets with authentication, product browsing, and order handling.}
+\resumeItem{Implemented session management using Servlets and JDBC with a relational database for users, products, and orders.}
+\resumeItem{Created a responsive frontend using Bootstrap and reusable UI layouts.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------CODING PROFILES-----------
+\section{Coding Profiles}
+\resumeSubHeadingListStart
+\resumeItemListStart
+\resumeItem{Solved \textbf{350+} coding problems on \textbf{LeetCode}.}
+\resumeItem{Solved \textbf{120+} problems on \textbf{CodeChef}.}
+\resumeItem{Completed \textbf{100+} problems on \textbf{GeeksforGeeks}.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Oriental Institute of Science and Technology, Bhopal}{Sep 2022 -- Jun 2026}
+{B.Tech in Computer Science and Engineering (AI \& ML), CGPA: 7.5}{Bhopal, MP}
+
+\resumeSubheading
+{Deepak Memorial Academy}{Apr 2022}
+{PCM (Physics, Chemistry, Mathematics): 75\%}{Sagar, MP}
+
+\resumeSubHeadingListEnd
+
+\end{document}
