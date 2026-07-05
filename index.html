@@ -27,7 +27,12 @@
 
   <body>
     <div class="cursor-dot"></div>
-    <button id="scrollTopBtn" title="Go to top">&uarr;</button>
+    <button id="scrollTopBtn" class="scroll-top-btn" title="Go to top" aria-label="Go to top">
+      <span class="scroll-top-progress" aria-hidden="true"></span>
+      <span class="scroll-top-arrow" aria-hidden="true">
+        <i class="fa-solid fa-arrow-up"></i>
+      </span>
+    </button>
 
     <section class="fade-on-scroll">
       <div data-include="partials/navbar.html"></div>
